@@ -1,10 +1,11 @@
 import { useTheme } from "@/context/theme-provider";
-import { Moon, Sun } from "lucide-react";
+
 import { Link } from "react-router-dom";
+import { ThemeToggle } from "./theme-toggle";
 
 
 const Header = () => {
-  const { theme, setTheme } = useTheme();
+  const { theme} = useTheme();
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 py-2">
       <div className="flex justify-between items-center container mx-auto h-16 px-4">
@@ -17,18 +18,7 @@ const Header = () => {
         </Link>
         <div className="flex gap-4">
           <span>CitySearch</span>
-          <span
-            className={`cursor-pointer transition-transform duration-500 ${
-              theme === "dark" ? "rotate-180" : "rotate-0"
-            } `}
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          >
-            {theme === "dark" ? (
-              <Sun className="h-6 w-6 rotate-0 text-yellow-500 transition-all " />
-            ) : (
-              <Moon className="h-6 w-6 rotate-0 text-blue-500 transition-all" />
-            )}
-          </span>
+          <ThemeToggle />
         </div>
       </div>
     </header>
